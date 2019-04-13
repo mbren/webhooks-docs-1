@@ -1,0 +1,1863 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tableau Server REST API 3.2 Collection",
+    "description": "TODO: Add Description",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://example.com/api/{version}",
+      "variables": {
+        "version": {
+          "default": "DefaultParameterValue"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Sign In (XML)",
+        "description": "Sign In",
+        "operationId": "SignIn(xml)",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "text/xml"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest> \r\n  <credentials name=\"admin\" password=\"{{password}}\">\r\n    <site contentUrl=\"\" />\r\n  </credentials>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest> \r\n  <credentials name=\"admin\" password=\"{{password}}\">\r\n    <site contentUrl=\"\" />\r\n  </credentials>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/1edc53ac-e247-4870-9fd3-6fad0ce5f84d/users": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Add User to Site",
+        "description": "Create Site\nonlinehelp.tableau.com/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm",
+        "operationId": "AddUserToSite",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "text/xml"
+            }
+          },
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "6wOf7DxuTxKmMNZlpbDBkg|OeISHDtUuo3Otf98x0yiJ5Z9sENlsIOu"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n  <user name=\"NewUser8\" siteRole=\"Publisher\" />\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n  <user name=\"NewUser8\" siteRole=\"Publisher\" />\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Sites (\"Get list of Sites\")",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Sites",
+        "operationId": "QuerySites(\"getListOfSites\")",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/users": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get Users on Site",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Get_Users_on_Site",
+        "operationId": "GetUsersOnSite",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/1edc53ac-e247-4870-9fd3-6fad0ce5f84d/projects": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Create Project",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Create_Project",
+        "operationId": "CreateProject",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "text/xml"
+            }
+          },
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "6wOf7DxuTxKmMNZlpbDBkg|OeISHDtUuo3Otf98x0yiJ5Z9sENlsIOu"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n  <project name=\"newnestedproject\"\r\n   description=\"a nested project created for testing purposes\"\r\n   parentProjectId=\"afe6f0b8-cb10-11e7-9fd4-db8b61369aa5\"\r\n   contentPermissions=\"ManagedByOwner\" />\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n  <project name=\"newnestedproject\"\r\n   description=\"a nested project created for testing purposes\"\r\n   parentProjectId=\"afe6f0b8-cb10-11e7-9fd4-db8b61369aa5\"\r\n   contentPermissions=\"ManagedByOwner\" />\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Projects",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Projects",
+        "operationId": "QueryProjects",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/datasources/{datasourceid}/refresh": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Update Datasource Now",
+        "description": "TBD",
+        "operationId": "UpdateDatasourceNow",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "datasourceid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest></tsRequest>"
+              },
+              "example": "<tsRequest></tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/datasources": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Datasources",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Datasources",
+        "operationId": "QueryDatasources",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/1edc53ac-e247-4870-9fd3-6fad0ce5f84d/views/2474164d-8d37-4a4c-abc7-c2070fd25fd5/pdf": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query View PDF",
+        "description": "TODO: Add Description",
+        "operationId": "QueryViewPdf",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "TQFoZfooQjW2EUrDUKLtCQ|1uE84qtmB6COU3Yl8s2wTi3wuYOVMicI"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/views": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Views for Site",
+        "description": "http://onlinehelp.tableau.com/v10.4/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Views_for_Site",
+        "operationId": "QueryViewsForSite",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/1edc53ac-e247-4870-9fd3-6fad0ce5f84d/views/2474164d-8d37-4a4c-abc7-c2070fd25fd5/data": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query View Data (CSV)",
+        "description": "TODO: Add Description",
+        "operationId": "QueryViewData(csv)",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "TQFoZfooQjW2EUrDUKLtCQ|1uE84qtmB6COU3Yl8s2wTi3wuYOVMicI"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/1edc53ac-e247-4870-9fd3-6fad0ce5f84d/schedules/9a4ebbab-9ec8-487a-9b48-47fa81d6077a/workbooks": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Add Workbook to Schedule",
+        "description": "TBD",
+        "operationId": "AddWorkbookToSchedule",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "TQFoZfooQjW2EUrDUKLtCQ|1uE84qtmB6COU3Yl8s2wTi3wuYOVMicI"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n<task>\r\n<extractRefresh>\r\n  <workbook id=\"5de9cc53-b17d-45af-804d-49144b39f29f\" />\r\n</extractRefresh>            \r\n</task>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n<task>\r\n<extractRefresh>\r\n  <workbook id=\"5de9cc53-b17d-45af-804d-49144b39f29f\" />\r\n</extractRefresh>            \r\n</task>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/schedules": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Schedules",
+        "description": "TBD",
+        "operationId": "QuerySchedules",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "gg9PUiZCRquTFi7xWqUQwQ|oLhVBKn681ZmSbxQN7kTwSMOmpSg6Mkn"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/1edc53ac-e247-4870-9fd3-6fad0ce5f84d/schedules/9a4ebbab-9ec8-487a-9b48-47fa81d6077a/datasources": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Add Datasource to Schedule",
+        "description": "TBD",
+        "operationId": "AddDatasourceToSchedule",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "TQFoZfooQjW2EUrDUKLtCQ|1uE84qtmB6COU3Yl8s2wTi3wuYOVMicI"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\n<task>\n<extractRefresh>\n  <datasource id=\"89a82d78-664f-45a1-8256-d4d2961a070b\" />\n</extractRefresh>            \n</task>\n</tsRequest>"
+              },
+              "example": "<tsRequest>\n<task>\n<extractRefresh>\n  <datasource id=\"89a82d78-664f-45a1-8256-d4d2961a070b\" />\n</extractRefresh>            \n</task>\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/workbooks/{workbookid}/refresh": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Update Workbook Now",
+        "description": "TBD",
+        "operationId": "UpdateWorkbookNow",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workbookid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest></tsRequest>"
+              },
+              "example": "<tsRequest></tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/workbooks": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Workbooks for Site",
+        "description": "TBD",
+        "operationId": "QueryWorkbooksForSite",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/a72eaefb-a60d-41ce-b2e8-9237af9a6df3/favorites/9af6da0b-9720-4755-b383-6d42a6f7e1ae": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Add Project to Favorites",
+        "description": "TBD",
+        "operationId": "AddProjectToFavorites",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "9A6OSqrbTXyTAYi_Z8WqFA|uQ2PMSsKAjnORUf9EcO3ffbFp1BtwYLo"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\n\t  <favorite label=\"ExampleLabel\"> \n    <project id=\"9fd03dc1-c909-434b-8db7-fb7fa5d26023\" /> \n  </favorite> \n</tsRequest>"
+              },
+              "example": "<tsRequest>\n\t  <favorite label=\"ExampleLabel\"> \n    <project id=\"9fd03dc1-c909-434b-8db7-fb7fa5d26023\" /> \n  </favorite> \n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/favorites/{userid}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get Favorites for User",
+        "description": "TBD",
+        "operationId": "GetFavoritesForUser",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/a72eaefb-a60d-41ce-b2e8-9237af9a6df3/favorites/9af6da0b-9720-4755-b383-6d42a6f7e1ae/projects/9fd03dc1-c909-434b-8db7-fb7fa5d26023": {
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete Project from Favorites",
+        "description": "TBD",
+        "operationId": "DeleteProjectFromFavorites",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "9A6OSqrbTXyTAYi_Z8WqFA|uQ2PMSsKAjnORUf9EcO3ffbFp1BtwYLo"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\n\t  <favorite label=\"ExampleLabel\"> \n    <project id=\"9fd03dc1-c909-434b-8db7-fb7fa5d26023\" /> \n  </favorite> \n</tsRequest>"
+              },
+              "example": "<tsRequest>\n\t  <favorite label=\"ExampleLabel\"> \n    <project id=\"9fd03dc1-c909-434b-8db7-fb7fa5d26023\" /> \n  </favorite> \n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/settings/extensions": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get Dashboard Extensions Server Settings",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Sites",
+        "operationId": "GetDashboardExtensionsServerSettings",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Set Dashboard Extensions Server Settings",
+        "description": "http://onlinehelp.tsi.lan/v10.5/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Sites",
+        "operationId": "SetDashboardExtensionsServerSettings",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n    <extensionsServerSettings>\r\n        <extensionsGloballyEnabled>true</extensionsGloballyEnabled>\r\n        <blockList>https://www.example.com/you-should-block-this-extension.html</blockList>\r\n        <blockList>https://www.example.com/block-this-extension-also.html</blockList>\r\n    </extensionsServerSettings>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n    <extensionsServerSettings>\r\n        <extensionsGloballyEnabled>true</extensionsGloballyEnabled>\r\n        <blockList>https://www.example.com/you-should-block-this-extension.html</blockList>\r\n        <blockList>https://www.example.com/block-this-extension-also.html</blockList>\r\n    </extensionsServerSettings>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/settings/extensions": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get Dashboard Extensions Site Settings",
+        "description": "TODO: Add Description",
+        "operationId": "GetDashboardExtensionsSiteSettings",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Set Dashboard Extensions Site Settings",
+        "description": "TODO: Add Description",
+        "operationId": "SetDashboardExtensionsSiteSettings",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n    <extensionsSiteSettings>\r\n        <extensionsEnabled>true</extensionsEnabled>\r\n        <useDefaultSetting>true</useDefaultSetting>\r\n        <safeList>\r\n            <url>https://www.example.com/mysecondextension.html</url>\r\n            <fullDataAllowed>false</fullDataAllowed>\r\n            <promptNeeded>true</promptNeeded>\r\n        </safeList>\r\n        <safeList>\r\n            <url>https://www.example.com/myextension.html</url>\r\n            <fullDataAllowed>false</fullDataAllowed>\r\n            <promptNeeded>true</promptNeeded>\r\n        </safeList>\r\n    </extensionsSiteSettings>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n    <extensionsSiteSettings>\r\n        <extensionsEnabled>true</extensionsEnabled>\r\n        <useDefaultSetting>true</useDefaultSetting>\r\n        <safeList>\r\n            <url>https://www.example.com/mysecondextension.html</url>\r\n            <fullDataAllowed>false</fullDataAllowed>\r\n            <promptNeeded>true</promptNeeded>\r\n        </safeList>\r\n        <safeList>\r\n            <url>https://www.example.com/myextension.html</url>\r\n            <fullDataAllowed>false</fullDataAllowed>\r\n            <promptNeeded>true</promptNeeded>\r\n        </safeList>\r\n    </extensionsSiteSettings>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/jobs/0e6e55de-fccc-4028-a27a-8f0e6940cec9": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Job",
+        "description": "TODO: Add Description",
+        "operationId": "QueryJob",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/jobs": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Jobs",
+        "description": "TODO: Add Description",
+        "operationId": "QueryJobs",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/views/{viewid}/permissions": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Add View Permissions",
+        "description": "TODO: Add Description",
+        "operationId": "AddViewPermissions",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "viewid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n\t<permissions>\r\n\t    <granteeCapabilities>\r\n\t      <user id=\"1a5dffe8-2439-4862-9eb0-46d055ef7379\" />\r\n\t      <capabilities>\r\n                <capability name=\"AddComment\" mode=\"Allow\"/>\r\n\t      </capabilities>\r\n\t    </granteeCapabilities>\r\n\t</permissions>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n\t<permissions>\r\n\t    <granteeCapabilities>\r\n\t      <user id=\"1a5dffe8-2439-4862-9eb0-46d055ef7379\" />\r\n\t      <capabilities>\r\n                <capability name=\"AddComment\" mode=\"Allow\"/>\r\n\t      </capabilities>\r\n\t    </granteeCapabilities>\r\n\t</permissions>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query View Permissions",
+        "description": "TODO: Add Description",
+        "operationId": "QueryViewPermissions",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "viewid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete View Permissions",
+        "description": "TODO: Add Description",
+        "operationId": "DeleteViewPermissions",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "viewid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n  <permissions>\r\n      <view id=\"0524c7ce-250b-45b1-adf2-d08f1648643c\" />\r\n    <granteeCapabilities>\r\n      <user id=\"1a5dffe8-2439-4862-9eb0-46d055ef7379\"/>\r\n      <capabilities>\r\n        <capability name=\"ExportImage\" mode=\"Deny\" />\r\n      </capabilities>\r\n    </granteeCapabilities>\r\n  </permissions>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n  <permissions>\r\n      <view id=\"0524c7ce-250b-45b1-adf2-d08f1648643c\" />\r\n    <granteeCapabilities>\r\n      <user id=\"1a5dffe8-2439-4862-9eb0-46d055ef7379\"/>\r\n      <capabilities>\r\n        <capability name=\"ExportImage\" mode=\"Deny\" />\r\n      </capabilities>\r\n    </granteeCapabilities>\r\n  </permissions>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/dataAlerts": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Data-Driven Alerts",
+        "description": "TODO: Add Description",
+        "operationId": "Query dataDriven alerts",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/dataAlerts/{dataAlert}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Query Data-Driven Alert Details",
+        "description": "TODO: Add Description",
+        "operationId": "Query dataDriven alert details",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataAlert",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Update Data-Driven Alert",
+        "description": "AKA \"Add Alert Recipient\"",
+        "operationId": "Update dataDriven alert",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/xml"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataAlert",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n    <dataAlert id=\"14e5674e-1a28-4bb0-86bc-efc96d2986de\" subject=\"Data alert weekly- Shipping\" creatorId=\"1a5dffe8-2439-4862-9eb0-46d055ef7379\" createdAt=\"2018-09-08T01:10:14Z\" updatedAt=\"2018-09-08T01:10:25Z\" frequency=\"weekly\">\r\n    \t    </dataAlert>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n    <dataAlert id=\"14e5674e-1a28-4bb0-86bc-efc96d2986de\" subject=\"Data alert weekly- Shipping\" creatorId=\"1a5dffe8-2439-4862-9eb0-46d055ef7379\" createdAt=\"2018-09-08T01:10:14Z\" updatedAt=\"2018-09-08T01:10:25Z\" frequency=\"weekly\">\r\n    \t    </dataAlert>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete Data-Driven Alert",
+        "description": "AKA \"Add Alert Recipient\"",
+        "operationId": "Delete dataDriven alert",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataAlert",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sites/{siteid}/dataAlerts/{dataAlert}/users": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Add User to Data-Driven Alert",
+        "description": "AKA \"Add Alert Recipient\"",
+        "operationId": "Add user to dataDriven alert",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataAlert",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n  <user id=\"{{userid}}\"/>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n  <user id=\"{{userid}}\"/>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete User from Data-Driven Alert",
+        "description": "AKA \"Add Alert Recipient\"",
+        "operationId": "Delete user from dataDriven alert",
+        "parameters": [
+          {
+            "name": "X-Tableau-Auth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "{{auth}}"
+            }
+          },
+          {
+            "name": "siteid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataAlert",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": "<tsRequest>\r\n  <user id=\"{{userid}}\"/>\r\n</tsRequest>"
+              },
+              "example": "<tsRequest>\r\n  <user id=\"{{userid}}\"/>\r\n</tsRequest>"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SignInRequest": {
+        "title": "SignInRequest",
+        "required": [
+          "credentials"
+        ],
+        "type": "object",
+        "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/Credentials"
+          }
+        },
+        "example": {
+          "credentials": {
+            "name": "{{user}}",
+            "password": "{{password}}",
+            "site": {
+              "contentUrl": ""
+            }
+          }
+        }
+      },
+      "Credentials": {
+        "title": "Credentials",
+        "required": [
+          "name",
+          "password",
+          "site"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "site": {
+            "$ref": "#/components/schemas/Site"
+          }
+        }
+      },
+      "Site": {
+        "title": "Site",
+        "required": [
+          "contentUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "contentUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
